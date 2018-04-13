@@ -1,0 +1,103 @@
+<html>
+	<head>
+		<title>Heart Rate</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="bloodpressure.html">Blood Pressure</a></li>
+										<li><a href="exercise.html">Exercise</a></li>
+									<ul>
+								</nav>
+						</div>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>What is a heart rate?</h1>
+							<p>First Things First: Resting Heart Rate
+Your resting heart rate is the number of times your heart beats per minute when you’re at rest. A good time to check it is in the morning after you’ve had a good night’s sleep, before you get out of bed or grab that first cup of java!
+For most of us, between 60 and 100 beats per minute (bpm) is normal. The rate can be affected by factors like stress, anxiety, hormones, medication, and how physically active you are. An athlete or more active person may have a resting heart rate as low as 40 beats per minute. Now that’s chill!
+When it comes to resting heart rate, lower is better. It usually means your heart muscle is in better condition and doesn’t have to work as hard to maintain a steady beat. Studies have found that a higher resting heart rate is linked with lower physical fitness and higher blood pressure and body weight.<p>
+<p>Know Your Numbers: Maximum and Target Heart Rate<p>
+			<head>
+				<body>
+			    <select id="BpmSelect" onchange="saveBpm(this.value, 365);">
+						 <option value="click">Click here to select your Heartrate</option>
+			        <option value="100-170 BPM">100-170 BPM</option>
+			        <option value="95-162 BPM">95-162 BPM</option>
+			        <option value="93-157 BPM ">93-157 BPM </option>
+			        <option value="90-153 BPM">90-153 BPM</option>
+			        <option value="88-149-170 BPM">88-149 BPM</option>
+			        <option value="85-145 BPM">88-149 BPM</option>
+			        <option value="83-140 BPM">85-145 BPM</option>
+			        <option value="80-136 BPM">83-140 BPM</option>
+			        <option value="78-132 BPM">78-132 BPM</option>
+			        <option value="75-128 BPM ">75-128 BPM</option>
+			    </select>
+			  </body>
+			</html>
+<!--//I create a cookie here, below  -->
+			<script>
+			var saveclass = null;
+
+			function save(cookieValue)
+			{
+			    var sel = document.getElementById('BpmSelect');
+
+			    saveclass = saveclass ? saveclass : document.body.className;
+			    document.body.className = saveclass + ' ' + sel.value;
+
+			    setCookie('bpm', cookieValue, 365);
+			}
+
+			function setCookie(cookieName, cookieValue, nDays) {
+			    var today = new Date();
+			    var expire = new Date();
+
+			    if (nDays==null || nDays==0)
+			        nDays=1;
+
+			    expire.setTime(today.getTime() + 3600000*24*nDays);
+			    document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString()
+			<script>
+<!--//Read the cookie on return to the page -->
+			<script>
+			function readCookie(name) {
+			  var nameEQ = name + "=";
+			  var ca = document.cookie.split(';');
+			  for(var i = 0; i < ca.length; i++) {
+			    var c = ca[i];
+			    while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+			    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			  }
+			  return null;
+			}
+			<script>
+
+			<script>
+			document.addEventListener('DOMContentLoaded', function() {
+			    var BpmSelect = document.getElementById('BpmSelect');
+			    var selectedBpm = readCookie('bpm');
+
+			    BpmSelect.value = selectedBpm;
+			    saveclass = saveclass ? saveclass : document.body.className;
+			    document.body.className = saveclass + ' ' + selectedBpm;
+			});
+			<script>
+	</body>
+</html>

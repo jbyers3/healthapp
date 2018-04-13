@@ -1,0 +1,98 @@
+
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="index.html">Home</a></li>
+										<li><a href="heartrate.html">Heart Rate</a></li>
+										<li><a href="exercise.html">Exercise</a></li>
+									<ul>
+								</nav>
+							</div>
+							</header>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Blood Pressure?</h1>
+							<p>The American Heart Association recommends home monitoring for all people with high blood pressure to help the healthcare provider determine whether treatments are working. Home monitoring (self-measured blood pressure) is not a substitute for regular visits to your physician. If you have been prescribed medication to lower your blood pressure, don't stop taking your medication without consulting your doctor, even if your blood pressure readings are in the normal range during home monitoring.<p>
+
+			</head>
+			<body>
+				<select id="BloodpSelect" onchange="saveBloodp(this.value, 365);">
+					 <option value="click">Click here to select your bloodpressure</option>
+						<option value="Normal">Normal</option>
+						<option value="Elevated">Elevated</option>
+						<option value="Hypertension Stage 1 ">Hypertension Stage 1</option>
+						<option value="Hypertension Stage 2">Hypertension Stage 2</option>
+						<option value="Hypertensive Crisis ">Hypertensive Crisis</option>
+				</select>
+			</body>
+		</html>
+
+<!--//I create a cookie here, below  -->
+		<script>
+		var saveclass = null;
+
+		function save(cookieValue)
+		{
+				var sel = document.getElementById('BloodPSelect');
+
+				saveclass = saveclass ? saveclass : document.body.className;
+				document.body.className = saveclass + ' ' + sel.value;
+
+				setCookie('bps', cookieValue, 365);
+		}
+
+		function setCookie(cookieName, cookieValue, nDays) {
+				var today = new Date();
+				var expire = new Date();
+
+				if (nDays==null || nDays==0)
+						nDays=1;
+
+				expire.setTime(today.getTime() + 3600000*24*nDays);
+				document.cookie = cookieName+"="+escape(cookieValue) + ";expires="+expire.toGMTString()
+		<script>
+<!--//Read the cookie on return to the page -->
+		<script>
+		function readCookie(name) {
+			var nameEQ = name + "=";
+			var ca = document.cookie.split(';');
+			for(var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+				if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+			}
+			return null;
+		}
+		<script>
+
+		<script>
+		document.addEventListener('DOMContentLoaded', function() {
+				var BloodpSelect = document.getElementById('BloodpSelect');
+				var selectedBloodp = readCookie('bps');
+
+				BloodpSelect.value = selectedBloodp;
+				saveclass = saveclass ? saveclass : document.body.className;
+				document.body.className = saveclass + ' ' + selectedBloodp;
+		});
+		<script>
+
+</body>
+</html>
